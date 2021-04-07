@@ -1,5 +1,5 @@
-# %%REPONAME%%
-Terraform child module to manage %%FN%%.
+# terraform-azurerm-windows-vm
+Terraform child module to manage creation of generic Windows VMs.
 
 ## Relevant Requirements & Prerequisites
 *
