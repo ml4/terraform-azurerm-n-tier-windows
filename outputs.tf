@@ -7,10 +7,7 @@
 ## g = resource parameter to output
 ## h = resource subparameter if applicable
 #
-## example:
-# output "akp-akp-main-public_key" {
-#   value       = aws_key_pair.main.public_key
-#   description = "AWS Key Pair: AWS key pair public key content"
-# }
-
-
+output "awvm-awvm-main-public_ip_address" {
+  value       = azurerm_windows_virtual_machine.main.public_ip_address
+  description = "Azure Windows VM: Azure Windows VM public IP address"
+}

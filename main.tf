@@ -17,26 +17,28 @@ resource "azurerm_network_interface" "main" {
   }
 }
 
+# See notes here: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/windows_virtual_machine
 resource "azurerm_windows_virtual_machine" "main" {
-  name                = "${var.prefix}-${var.az_vm_name}"
+  name                = "${var.prefix}-${var.instance_config.vm_name}"
   resource_group_name = azurerm_resource_group.main.name
   location            = azurerm_resource_group.main.location
-  size                = "Standard_F2"
-  admin_username      = "adminuser"
-  admin_password      = "P@$$w0rd1234!"
+  size                = var.instance_config.machine_size
+  admin_username      = var.instance_config.admin_username
+  admin_password      = var.instance_config.admin_password
   network_interface_ids = [
     azurerm_network_interface.main.id,
   ]
 
   os_disk {
     caching              = "ReadWrite"
-    storage_account_type = "Standard_LRS"
+    storage_account_type = var.instance_config.os_disk_storage_account_type
   }
 
+  # source_image_id can replace this if business packer base images are to be used
   source_image_reference {
-    publisher = "MicrosoftWindowsServer"
-    offer     = "WindowsServer"
-    sku       = "2016-Datacenter"
-    version   = "latest"
+    publisher = var.instance_config.os_publisher
+    offer     = var.instance_config.os_offer
+    sku       = var.instance_config.os_sku
+    version   = var.instance_config.os_version
   }
 }
