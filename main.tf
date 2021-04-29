@@ -1,4 +1,4 @@
-//// main.tf terraform configuration
+instance_admin_password//// main.tf terraform configuration
 //
 resource "azurerm_resource_group" "main" {
   name     = var.rg-name

@@ -40,5 +40,6 @@ variable "instance_config" {
     os_disk_storage_account_type = "Standard_LRS"
     machine_size                 = "Standard_F2"
     admin_username               = "adminuser"
+    admin_password               = ""
   }
 }
