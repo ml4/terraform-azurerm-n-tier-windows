@@ -6,7 +6,7 @@ resource "azurerm_resource_group" "main" {
 }
 
 resource "azurerm_network_interface" "main" {
-  name                = "${azurerm_windows_virtual_machine.main}-nic"
+  name                = "${var.prefix}-${var.instance_config.vm_name}-nic"
   location            = azurerm_resource_group.main.location
   resource_group_name = azurerm_resource_group.main.name
 
