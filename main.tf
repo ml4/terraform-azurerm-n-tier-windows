@@ -14,7 +14,16 @@ resource "azurerm_network_interface" "main" {
     name                          = "internal"
     subnet_id                     = var.subnet_id
     private_ip_address_allocation = "Dynamic"
+    public_ip_address_id = azurerm_public_ip.public_ip.id
   }
+}
+
+// remove this resource to have only private IP
+resource "azurerm_public_ip" "public_ip" {
+  name                = "${var.prefix}-${var.instance_config.vm_name}-nic-ext"
+  resource_group_name = azurerm_resource_group.main.name
+  location            = var.location
+  allocation_method   = "Dynamic"
 }
 
 // See notes here: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/windows_virtual_machine
