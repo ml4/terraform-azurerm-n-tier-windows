@@ -15,24 +15,24 @@ output "web_startup_script" {
   description = "startup script when instance boots"
 }
 
-output "network_subnet_id" {
-  value       = azurerm_subnet.networking[*].id
-  description = "VNet subnet ID(s)"
-}
-
-//// win vm related
+//// windows vm related
 //
-output "winvm-web-public_ip_address" {
-  value       = azurerm_windows_virtual_machine.web.public_ip_address
-  description = "Azure Win VM: Azure Win VM Web Server public IP address"
+output "windowsvm-web-public_ip_address" {
+  value       = azurerm_windows_virtual_machine.web[*].public_ip_address
+  description = "Azure windows VM: Azure windows VM Web Server public IP address"
 }
 
-// output "winvm-app-public_ip_address" {
+output "windowsvm-web-private_ip_address" {
+  value       = azurerm_windows_virtual_machine.web[*].private_ip_address
+  description = "Azure windows VM: Azure windows VM Web Server private IP address"
+}
+
+// output "windowsvm-app-public_ip_address" {
 //   value       = azurerm_windows_virtual_machine.app.public_ip_address
-//   description = "Azure Win VM: Azure Win VM App Server public IP address"
+//   description = "Azure windows VM: Azure windows VM App Server public IP address"
 // }
 
-// output "winvm-db-public_ip_address" {
+// output "windowsvm-db-public_ip_address" {
 //   value       = azurerm_windows_virtual_machine.db.public_ip_address
-//   description = "Azure Win VM: Azure Win VM DB Server public IP address"
+//   description = "Azure windows VM: Azure windows VM DB Server public IP address"
 // }

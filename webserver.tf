@@ -2,7 +2,7 @@
 
 resource "azurerm_resource_group" "web" {
   count    = var.web ? 1 : 0
-  name     = "${var.prefix}-${var.rg_name}-web"
+  name     = "${var.prefix}-${var.rg_name}"
   location = var.location
 }
 
@@ -10,13 +10,13 @@ resource "azurerm_network_interface" "web" {
   count               = var.web ? 1 : 0
   name                = "${var.prefix}-${var.web_instance_config.vm_name}-nic-int-web"
   location            = var.location
-  resource_group_name = azurerm_resource_group.web.name
+  resource_group_name = azurerm_resource_group.web[count.index].name
 
   ip_configuration {
     name                          = "internal"
     subnet_id                     = var.subnet_id
     private_ip_address_allocation = "Dynamic"
-    public_ip_address_id          = azurerm_public_ip.web.id
+    public_ip_address_id          = azurerm_public_ip.web[count.index].id
   }
 }
 
@@ -24,21 +24,22 @@ resource "azurerm_network_interface" "web" {
 resource "azurerm_public_ip" "web" {
   count               = var.web ? 1 : 0
   name                = "${var.prefix}-${var.web_instance_config.vm_name}-nic-ext-web"
-  resource_group_name = azurerm_resource_group.web.name
+  resource_group_name = azurerm_resource_group.web[count.index].name
   location            = var.location
   allocation_method   = "Dynamic"
 }
 
-// See notes here: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/windows_virtual_machine
-resource "azurerm_windows_virtual_machine" "web" {
-  name                = "${var.prefix}-${var.web_instance_config.vm_name}-web"
-  resource_group_name = azurerm_resource_group.web.name
-  location            = azurerm_resource_group.web.location
-  size                = var.web_instance_config.machine_size
-  admin_username      = var.web_instance_config.admin_username
-  admin_password      = var.web_instance_config.admin_password
+resource "azurerm_linux_virtual_machine" "web" {
+  count                           = var.web ? 1 : 0
+  name                            = "${var.prefix}-${var.web_instance_config.vm_name}"
+  resource_group_name             = azurerm_resource_group.web[count.index].name
+  location                        = var.location
+  size                            = var.web_instance_config.machine_size
+  admin_username                  = var.web_instance_config.admin_username
+  admin_password                  = var.web_instance_config.admin_password
+  disable_password_authentication = var.disable_password_authentication
   network_interface_ids = [
-    azurerm_network_interface.web.id,
+    azurerm_network_interface.web[count.index].id
   ]
 
   os_disk {

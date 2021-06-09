@@ -59,37 +59,8 @@ variable "database_startup_script" {
   default = ""
 }
 
-//// networking related
+//// linuxvm related
 //
-variable "vnet_address_space" {
-  type        = list(string)
-  description = "(Optional) list of vnet address ranges"
-  default     = ["10.0.0.0/16"]
-}
-
-variable "public_subnet_address_spaces" {
-  description = "A list of publically accessible subnet address spaces and names."
-  type = list(object({
-    name          = string
-    address_space = string
-  }))
-}
-
-variable "private_subnet_address_spaces" {
-  description = "A list of privately accessible subnet address spaces and names."
-  type = list(object({
-    name          = string
-    address_space = string
-  }))
-}
-
-//// winvm related
-//
-variable "subnet_id" {
-  type        = string
-  description = "ID of a single vnet subnet"
-}
-
 variable "web_instance_config" {
   type = object({
     vm_name                      = string
@@ -103,14 +74,14 @@ variable "web_instance_config" {
     admin_password               = string
   })
   default = {
-    vm_name                      = "azure-winvm"
-    os_publisher                 = "Canonical"
-    os_offer                     = "UbuntuServer"
-    os_sku                       = "18.04-LTS"
-    os_version                   = "latest"
-    os_disk_storage_account_type = "Standard_LRS"
+    vm_name                      = "test-web"
     machine_size                 = "Standard_D2_v4"
-    admin_username               = "ubuntu"
+    os_publisher                 = "RedHat"
+    os_offer                     = "RHEL"
+    os_sku                       = "7_9"
+    os_version                   = "7.9.2021051701"
+    os_disk_storage_account_type = "Standard_LRS"
+    admin_username               = "rhel"
     admin_password               = ""
   }
 }
@@ -128,14 +99,14 @@ variable "app_instance_config" {
     admin_password               = string
   })
   default = {
-    vm_name                      = "azure-winvm"
-    os_publisher                 = "Canonical"
-    os_offer                     = "UbuntuServer"
-    os_sku                       = "18.04-LTS"
-    os_version                   = "latest"
-    os_disk_storage_account_type = "Standard_LRS"
+    vm_name                      = "test-web"
     machine_size                 = "Standard_D2_v4"
-    admin_username               = "ubuntu"
+    os_publisher                 = "RedHat"
+    os_offer                     = "RHEL"
+    os_sku                       = "7_9"
+    os_version                   = "7.9.2021051701"
+    os_disk_storage_account_type = "Standard_LRS"
+    admin_username               = "rhel"
     admin_password               = ""
   }
 }
@@ -153,14 +124,14 @@ variable "db_instance_config" {
     admin_password               = string
   })
   default = {
-    vm_name                      = "azure-winvm"
-    os_publisher                 = "Canonical"
-    os_offer                     = "UbuntuServer"
-    os_sku                       = "18.04-LTS"
-    os_version                   = "latest"
-    os_disk_storage_account_type = "Standard_LRS"
+    vm_name                      = "test-web"
     machine_size                 = "Standard_D2_v4"
-    admin_username               = "ubuntu"
+    os_publisher                 = "RedHat"
+    os_offer                     = "RHEL"
+    os_sku                       = "7_9"
+    os_version                   = "7.9.2021051701"
+    os_disk_storage_account_type = "Standard_LRS"
+    admin_username               = "rhel"
     admin_password               = ""
   }
 }
