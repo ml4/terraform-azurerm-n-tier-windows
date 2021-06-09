@@ -76,13 +76,13 @@ variable "web_instance_config" {
   default = {
     vm_name                      = "test-web"
     machine_size                 = "Standard_D2_v4"
-    os_publisher                 = "RedHat"
-    os_offer                     = "RHEL"
-    os_sku                       = "7_9"
-    os_version                   = "7.9.2021051701"
+    os_publisher                 = "MicrosoftWindowsServer"
+    os_offer                     = "WindowsServer"
+    os_sku                       = "2019-Datacenter"
+    os_version                   = "2019.0.20190410"
     os_disk_storage_account_type = "Standard_LRS"
-    admin_username               = "rhel"
-    admin_password               = ""
+    admin_username               = "admin"
+    admin_password               = "donotusethispassword"
   }
 }
 
@@ -101,13 +101,13 @@ variable "app_instance_config" {
   default = {
     vm_name                      = "test-web"
     machine_size                 = "Standard_D2_v4"
-    os_publisher                 = "RedHat"
-    os_offer                     = "RHEL"
-    os_sku                       = "7_9"
-    os_version                   = "7.9.2021051701"
+    os_publisher                 = "MicrosoftWindowsServer"
+    os_offer                     = "WindowsServer"
+    os_sku                       = "2019-Datacenter"
+    os_version                   = "2019.0.20190410"
     os_disk_storage_account_type = "Standard_LRS"
-    admin_username               = "rhel"
-    admin_password               = ""
+    admin_username               = "admin"
+    admin_password               = "donotusethispassword"
   }
 }
 
@@ -126,13 +126,13 @@ variable "db_instance_config" {
   default = {
     vm_name                      = "test-web"
     machine_size                 = "Standard_D2_v4"
-    os_publisher                 = "RedHat"
-    os_offer                     = "RHEL"
-    os_sku                       = "7_9"
-    os_version                   = "7.9.2021051701"
+    os_publisher                 = "MicrosoftWindowsServer"
+    os_offer                     = "WindowsServer"
+    os_sku                       = "2019-Datacenter"
+    os_version                   = "2019.0.20190410"
     os_disk_storage_account_type = "Standard_LRS"
-    admin_username               = "rhel"
-    admin_password               = ""
+    admin_username               = "admin"
+    admin_password               = "donotusethispassword"
   }
 }
 
