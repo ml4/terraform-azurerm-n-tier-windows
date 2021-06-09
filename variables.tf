@@ -59,7 +59,7 @@ variable "database_startup_script" {
   default = ""
 }
 
-//// linuxvm related
+// windows vm related
 //
 variable "web_instance_config" {
   type = object({

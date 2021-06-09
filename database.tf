@@ -29,7 +29,7 @@ resource "azurerm_public_ip" "db" {
   allocation_method   = "Dynamic"
 }
 
-resource "azurerm_linux_virtual_machine" "db" {
+resource "azurerm_windows_virtual_machine" "db" {
   count                           = var.database ? 1 : 0
   name                            = "${var.prefix}-${var.db_instance_config.vm_name}"
   resource_group_name             = azurerm_resource_group.db[count.index].name

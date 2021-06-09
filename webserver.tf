@@ -29,7 +29,7 @@ resource "azurerm_public_ip" "web" {
   allocation_method   = "Dynamic"
 }
 
-resource "azurerm_linux_virtual_machine" "web" {
+resource "azurerm_windows_virtual_machine" "web" {
   count                           = var.web ? 1 : 0
   name                            = "${var.prefix}-${var.web_instance_config.vm_name}"
   resource_group_name             = azurerm_resource_group.web[count.index].name
