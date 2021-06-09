@@ -30,13 +30,13 @@ resource "azurerm_public_ip" "web" {
 }
 
 resource "azurerm_windows_virtual_machine" "web" {
-  count                           = var.web ? 1 : 0
-  name                            = "${var.prefix}-${var.web_instance_config.vm_name}"
-  resource_group_name             = azurerm_resource_group.web[count.index].name
-  location                        = var.location
-  size                            = var.web_instance_config.machine_size
-  admin_username                  = var.web_instance_config.admin_username
-  admin_password                  = var.web_instance_config.admin_password
+  count               = var.web ? 1 : 0
+  name                = "${var.prefix}-${var.web_instance_config.vm_name}"
+  resource_group_name = azurerm_resource_group.web[count.index].name
+  location            = var.location
+  size                = var.web_instance_config.machine_size
+  admin_username      = var.web_instance_config.admin_username
+  admin_password      = var.web_instance_config.admin_password
 
   network_interface_ids = [
     azurerm_network_interface.web[count.index].id
