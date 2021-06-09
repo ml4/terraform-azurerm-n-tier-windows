@@ -25,9 +25,6 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [azurerm_linux_virtual_machine.app](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/linux_virtual_machine) | resource |
-| [azurerm_linux_virtual_machine.db](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/linux_virtual_machine) | resource |
-| [azurerm_linux_virtual_machine.web](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/linux_virtual_machine) | resource |
 | [azurerm_network_interface.app](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_interface) | resource |
 | [azurerm_network_interface.db](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_interface) | resource |
 | [azurerm_network_interface.web](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_interface) | resource |
@@ -37,6 +34,9 @@ No modules.
 | [azurerm_resource_group.app](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group) | resource |
 | [azurerm_resource_group.db](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group) | resource |
 | [azurerm_resource_group.web](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group) | resource |
+| [azurerm_windows_virtual_machine.app](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/windows_virtual_machine) | resource |
+| [azurerm_windows_virtual_machine.db](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/windows_virtual_machine) | resource |
+| [azurerm_windows_virtual_machine.web](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/windows_virtual_machine) | resource |
 | [local_file.app_startup_script](https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file) | resource |
 | [local_file.database_startup_script](https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file) | resource |
 | [local_file.web_startup_script](https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file) | resource |
@@ -61,7 +61,7 @@ No modules.
 | <a name="input_rg_name"></a> [rg\_name](#input\_rg\_name) | Resource group name | `string` | n/a | yes |
 | <a name="input_subnet_id"></a> [subnet\_id](#input\_subnet\_id) | Subnet to deploy to | `string` | n/a | yes |
 | <a name="input_web"></a> [web](#input\_web) | set to true to include web tier | `string` | `false` | no |
-| <a name="input_web_instance_config"></a> [web\_instance\_config](#input\_web\_instance\_config) | // linuxvm related | <pre>object({<br>    vm_name                      = string<br>    os_publisher                 = string<br>    os_offer                     = string<br>    os_sku                       = string<br>    os_version                   = string<br>    os_disk_storage_account_type = string<br>    machine_size                 = string<br>    admin_username               = string<br>    admin_password               = string<br>  })</pre> | <pre>{<br>  "admin_password": "donotusethispassword",<br>  "admin_username": "admin",<br>  "machine_size": "Standard_D2_v4",<br>  "os_disk_storage_account_type": "Standard_LRS",<br>  "os_offer": "WindowsServer",<br>  "os_publisher": "MicrosoftWindowsServer",<br>  "os_sku": "2019-Datacenter",<br>  "os_version": "2019.0.20190410",<br>  "vm_name": "test-web"<br>}</pre> | no |
+| <a name="input_web_instance_config"></a> [web\_instance\_config](#input\_web\_instance\_config) | windows vm related | <pre>object({<br>    vm_name                      = string<br>    os_publisher                 = string<br>    os_offer                     = string<br>    os_sku                       = string<br>    os_version                   = string<br>    os_disk_storage_account_type = string<br>    machine_size                 = string<br>    admin_username               = string<br>    admin_password               = string<br>  })</pre> | <pre>{<br>  "admin_password": "donotusethispassword",<br>  "admin_username": "admin",<br>  "machine_size": "Standard_D2_v4",<br>  "os_disk_storage_account_type": "Standard_LRS",<br>  "os_offer": "WindowsServer",<br>  "os_publisher": "MicrosoftWindowsServer",<br>  "os_sku": "2019-Datacenter",<br>  "os_version": "2019.0.20190410",<br>  "vm_name": "test-web"<br>}</pre> | no |
 | <a name="input_web_startup_script"></a> [web\_startup\_script](#input\_web\_startup\_script) | // templates | `string` | `""` | no |
 
 ## Outputs

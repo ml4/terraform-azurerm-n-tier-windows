@@ -37,7 +37,7 @@ resource "azurerm_windows_virtual_machine" "web" {
   size                            = var.web_instance_config.machine_size
   admin_username                  = var.web_instance_config.admin_username
   admin_password                  = var.web_instance_config.admin_password
-  disable_password_authentication = var.disable_password_authentication
+
   network_interface_ids = [
     azurerm_network_interface.web[count.index].id
   ]

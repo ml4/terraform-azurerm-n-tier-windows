@@ -37,7 +37,7 @@ resource "azurerm_windows_virtual_machine" "db" {
   size                            = var.db_instance_config.machine_size
   admin_username                  = var.db_instance_config.admin_username
   admin_password                  = var.db_instance_config.admin_password
-  disable_password_authentication = var.disable_password_authentication
+
   network_interface_ids = [
     azurerm_network_interface.db[count.index].id
   ]
