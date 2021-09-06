@@ -1,4 +1,4 @@
-# terraform-azurerm-windows-vm
+# terraform-azurerm-n-tier-windows
 Terraform child module to manage creation of generic Windows VMs.
 
 <!-- BEGIN_TF_DOCS -->
