@@ -1,5 +1,5 @@
-//// common variables
-//
+## common variables
+#
 variable "web" {
   type        = string
   description = "set to true to include web tier"
@@ -45,8 +45,8 @@ variable "common_tags" {
   default     = {}
 }
 
-//// templates
-//
+## templates
+#
 variable "web_startup_script" {
   default = ""
 }
@@ -59,8 +59,8 @@ variable "database_startup_script" {
   default = ""
 }
 
-// windows vm related
-//
+# windows vm related
+#
 variable "web_instance_config" {
   type = object({
     vm_name                      = string
